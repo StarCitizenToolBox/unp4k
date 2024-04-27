@@ -66,7 +66,21 @@ public class P4KFile : IDisposable
         fs.Close();
     }
 
-	public void Dispose()
+    /// <summary>
+    /// ExtractToMemory a file entry from the P4K.
+    /// </summary>
+    /// <param name="entry"></param>
+    public int[] ExtractToMemory(ZipEntry entry)
+    {
+        byte[] decomBuffer = new byte[4096];
+        MemoryStream ms = new();
+        Stream decompStream = P4K.GetInputStream(entry);
+        StreamUtils.Copy(decompStream, ms, decomBuffer);
+        decompStream.Close();
+        return ms.ToArray().Select((b) => (int)b).ToArray(); ;
+    }
+
+    public void Dispose()
 	{
         P4K.Close();
         GC.SuppressFinalize(this);
