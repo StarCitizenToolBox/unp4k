@@ -1,3 +1,5 @@
+# Deprecated due to the upstream abandoning maintenance (Stryxus), please refer to the new Rust implementation: https://github.com/StarCitizenToolBox/unp4k_rs
+
 # unp4k
 The go to tools which allow everyone and anyone to open, decrypt as well as extract any data from Star Citizen and Squadron 42!
 
